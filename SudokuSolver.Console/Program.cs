@@ -25,10 +25,10 @@ namespace SudokuSolver.Console
         {
             var state = new int[Constants.FieldSize, Constants.FieldSize];
 
-            state[0, 0] = 1;
-            state[0, 1] = 2;
-            state[0, 2] = 3;
-            state[0, 3] = 4;
+            //state[0, 0] = 9;
+            //state[0, 1] = 2;
+            //state[0, 2] = 3;
+            //state[0, 3] = 4;
             //state[0, 4] = 5;
             //state[0, 5] = 6;
             // state[0, 6] = 7;

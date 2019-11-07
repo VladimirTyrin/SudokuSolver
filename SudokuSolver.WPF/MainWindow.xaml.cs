@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using SudokuSolver.Engine;
 using SudokuSolver.Engine.InitialState;
 
@@ -15,6 +16,7 @@ namespace SudokuSolver.WPF
     public partial class MainWindow : Window
     {
         private readonly TextBox[,] _textBoxes = new TextBox[Constants.FieldSize, Constants.FieldSize];
+        private readonly Label[,] _borders = new Label[Constants.SquareSize, Constants.SquareSize];
         private readonly ConcurrentStack<Action> _uiUpdates = new ConcurrentStack<Action>();
         
         public MainWindow()
@@ -30,6 +32,24 @@ namespace SudokuSolver.WPF
             {
                 CellsGrid.ColumnDefinitions.Add(new ColumnDefinition());
                 CellsGrid.RowDefinitions.Add(new RowDefinition());
+            }
+
+            for (var i = 0; i < Constants.SquareSize; ++i)
+            {
+                for (var j = 0; j < Constants.SquareSize; ++j)
+                {
+                    _borders[i, j] = new Label();
+                    var border = _borders[i, j];
+                    border.SetValue(Grid.RowProperty, i * Constants.SquareSize);
+                    border.SetValue(Grid.ColumnProperty, j * Constants.SquareSize);
+                    border.SetValue(Grid.RowSpanProperty, Constants.SquareSize);
+                    border.SetValue(Grid.ColumnSpanProperty, Constants.SquareSize);
+                    border.BorderThickness = new Thickness(0.5);
+                    border.BorderBrush = Brushes.Black;
+                    border.HorizontalAlignment = HorizontalAlignment.Stretch;
+                    border.VerticalAlignment = VerticalAlignment.Stretch;
+                    CellsGrid.Children.Add(border);
+                }
             }
 
             for (var i = 0; i < Constants.FieldSize; i++)
@@ -52,6 +72,8 @@ namespace SudokuSolver.WPF
                     textBox.Text = "";
                 }
             }
+
+            
         }
 
         private void StartButton_OnClick(object sender, RoutedEventArgs e)
