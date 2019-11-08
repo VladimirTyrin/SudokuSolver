@@ -23,9 +23,35 @@ namespace SudokuSolver.Console
 
         private static IInitialStateProvider GetInitialStateProvider()
         {
-            var state = new int[Constants.FieldSize, Constants.FieldSize];
+            //var state = new int[Constants.FieldSize, Constants.FieldSize];
 
-            //state[0, 0] = 9;
+            //var state = new[,]
+            //{
+            //    { 0, 0, 0, 0, 0, 4, 0, 6, 0 },
+            //    { 0, 0, 4, 0, 3, 0, 1, 0, 0 },
+            //    { 0, 0, 7, 0, 0, 0, 0, 0, 2 },
+            //    { 0, 0, 5, 7, 0, 0, 9, 2, 0 },
+            //    { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            //    { 0, 8, 0, 0, 6, 0, 0, 0, 0 },
+            //    { 7, 0, 0, 0, 0, 0, 0, 8, 0 },
+            //    { 6, 0, 0, 9, 0, 5, 0, 3, 0 },
+            //    { 0, 0, 0, 0, 4, 0, 2, 1, 0 },
+
+            const int _ = 0;
+            var state = new[,]
+            {
+                { _, _, _, _, 6, 8, _, 3, _ },
+                { 1, 9, _, _, _, _, _, _, _ },
+                { 8, _, 3, 1, _, _, 2, _, _ },
+                { 4, _, _, _, 5, 1, _, 6, _ },
+                { 7, _, _, _, 2, _, _, _, 4 },
+                { _, _, _, _, 7, 3, 8, _, _ },
+                { 3, 1, _, _, _, 5, _, _, 7 },
+                { _, _, 4, _, _, _, _, 8, _ },
+                { _, 5, _, 7, 3, 4, 1, _, _ },
+            };
+
+            //state[0, 0] = 1;
             //state[0, 1] = 2;
             //state[0, 2] = 3;
             //state[0, 3] = 4;

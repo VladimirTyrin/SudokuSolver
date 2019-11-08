@@ -28,11 +28,20 @@ namespace SudokuSolver.Engine
                 }
 
                 var stepMoves = new List<(Move move, int moveCount)>();
+                var badStateDetected = false;
                 foreach (var (i, j) in state.GetEmptyCells())
                 {
                     var possibleMoves = state.GetPossibleMoves(i, j).ToArray();
+                    if (possibleMoves.Length == 0)
+                    {
+                        badStateDetected = true;
+                        break;
+                    }
                     stepMoves.AddRange(possibleMoves.Select(possibleMove => (new Move(i, j, possibleMove), possibleMoves.Length)));
                 }
+
+                if (badStateDetected)
+                    continue;
 
                 foreach (var (move, _) in stepMoves.OrderByDescending(m => m.moveCount))
                 {

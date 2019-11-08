@@ -118,7 +118,7 @@ namespace SudokuSolver.WPF
             {
                 DrawState(e);
             };
-            Thread.Sleep(100);
+            Thread.Sleep(5);
             _uiUpdates.Push(action);
             App.RunOnUiThread(() =>
             {
